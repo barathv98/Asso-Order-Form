@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            .border {
+                border: 0.5px solid grey;
+            }
+            .flex {
+                display: flex;
+            }
+            .flex-row {
+                flex-direction: row;
+            }
+            .flex-column {
+                flex-direction: column;
+            }
+            .width5 {
+                width: 5%;
+            }
+            .width15 {
+                width: 15%;
+            }
+            .width20 {
+                width: 20%;
+            }
+            .width25 {
+                width: 25%;
+            }
+            .width45 {
+                width: 45%;
+            }
+            .width50 {
+                width: 50%;
+            }
+            .width60 {
+                width: 60%;
+            }
+            .padding5 {
+                padding: 5px;
+            }
+            .align-center {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="border: 0.5px solid grey">
+            <div style="display: flex">
+                <div style="border: 0.5px solid grey; width: 60%; padding: 5px;">
+                    <div>ASSOCIATE PRINTS</div>
+                    <div>EDUCATIONAL PUBLISHERS</div>
+                    <div>1370, P.K.N Road, SIVAKASI - 626 189</div>
+                    <div>Ph : 04562 - 276943</div> 
+                    <div>GST TIN No : 33AARFA7102N1ZA</div>
+                </div>
+                <div style="border: 0.5px solid grey; width: 40%;">
+                    <div style="border: 0.5px solid grey; padding: 5px;">
+                        Bill No.:
+                    </div>
+                    <div style="border: 0.5px solid grey; padding: 5px;">
+                        Order No.:
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex">
+            	<div style="border: 0.5px solid grey; width: 50%; padding: 5px;">
+                	Buyer:
+                    <div>{{ schoolInfo.name }}</div>
+                    <div>{{ schoolInfo.address }}</div>
+                </div>
+                <div style="border: 0.5px solid grey; width: 50%; padding: 5px;">
+                	Ship to:
+                    <div></div>
+                </div>
+            </div>
+            <div style="display: flex; text-align: center;">
+            	<div style="border: 0.5px solid grey; width: 5%; padding: 5px;">
+                	Sl.
+                </div>
+                <div style="border: 0.5px solid grey; width: 45%; padding: 5px;">
+                	PARTICULARS
+                </div>
+                <div style="border: 0.5px solid grey; width: 15%; padding: 5px;">
+                	QTY
+                </div>
+                <div style="border: 0.5px solid grey; width: 15%; padding: 5px;">
+                	RATE/COPY
+                </div>
+                <div style="border: 0.5px solid grey; width: 20%; padding: 5px;">
+                	AMOUNT
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
