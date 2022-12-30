@@ -1,0 +1,50 @@
+.book_row {
+    padding: 5px;
+    border-bottom: solid 0.5px black;
+    display: flex;
+    flex-direction: row;
+}
+.book_row:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
+.row_title {
+    width: 40%;
+    padding-left: 2%;
+    text-align: left;
+}
+.row_price {
+    width: 16%;
+    text-align: center;
+}
+.row_quantity {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    align-items: center;
+}
+.row_cost {
+    width: 20%;
+    text-align: center;
+}
+.extra_quants {
+    display: flex;
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+}
+.checkbox {
+    margin-right: 4px;
+    cursor: pointer;
+}
+input.quantity_form {
+  appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+  padding: 1px 12px;
+  width: 60%;
+  @media (max-width: 480px) {
+    padding: 1px 4px;
+    width: 90%;
+  }
+}
