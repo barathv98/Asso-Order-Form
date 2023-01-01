@@ -4,11 +4,10 @@ const orderRoutes = require("./routes/orderRoute");
 const connectDB = require("./config/db")
 
 const app = express();
+dotenv.config()
 connectDB();
 app.use(express.json());
-app.set('view engine', 'ejs');
 
-app.use('/api/confirm-order', orderRoutes);
-
-dotenv.config();
-app.listen(5000, console.log("connected to server"));
+app.use('/confirm-order', orderRoutes);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, console.log("connected to server"));

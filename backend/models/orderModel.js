@@ -9,6 +9,7 @@ const orderSchema = mongoose.Schema(
         orders: [
             {
                 id: Number,
+                title: String,
                 quantity: Number,
                 cost: Number,
                 cd: Boolean,

@@ -1,14 +1,11 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const asyncHandler = require("express-async-handler");
-const pdf = require('html-pdf');
 const path = require('path');
-const pdfTemplate = require('../views/samplePDF');
 const axios = require("axios");
-const { google } = require('googleapis');
 const fs = require('fs');
 const Order = require('../models/orderModel');
-const pdfGenerate = require('../utils/pdfCreation');
+const pdfGenerate = require('../utils/invoiceGeneration/pdfCreation');
 
 const confirmOrder = asyncHandler(async (req, res) => {
     const { total, orders, schoolInfo } = req.body
@@ -19,50 +16,37 @@ const confirmOrder = asyncHandler(async (req, res) => {
         schoolInfo
     })
     if(order) {
-        const fileStream = pdfGenerate(order._id, schoolInfo);
+        // const fileStream = pdfGenerate(order._id, schoolInfo);
         res.status(200).json({
             id: order._id,
-            fileStream: fileStream
+            // fileStream: fileStream
         })
     }
     else {
         res.status(400);
         throw new Error("Order creation failed");
     }
-    //let name = "abcd"
-    // pdf.create(pdfTemplate(name), {}).toFile(`backend/documents/invoice_123.pdf`, (err) => {
-    //     if (err) {
-    //         console.log(err);
-    //         res.send(Promise.reject());
-    //     }
 
-    //     // var sender = nodemailer.createTransport({
-    //     //     service: 'gmail',
-    //     //     auth: {
-    //     //         user: 'barathkumarv98@gmail.com',
-    //     //         pass: 'ptftkebjtqzisvar'
-    //     //     }
-    //     // });
-    //     // var mail = {
-    //     //     from: "barathkumarv98@gmail.com",
-    //     //     to: "rojageevee@gmail.com",
-    //     //     subject: "Sending Email using Node.js",
-    //     //     text: "That was easy!",
-    //     //     attachments: [
-    //     //         {
-    //     //             filename: 'invoice.pdf',
-    //     //             path: path.join(__dirname, '../documents', 'invoice.pdf'),
-    //     //             cid: 'invoice.pdf' 
-    //     //         }
-    //     //     ]
-    //     // };
-    //     // sender.sendMail(mail, function(error, info) {
-    //     //     if (error)
-    //     //         console.log(error);
-    //     //     else
-    //     //         console.log("Email sent successfully: " + info.response);
-    //     // });
-    // });
+    var sender = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'barathkumarv98@gmail.com',
+            pass: 'ptftkebjtqzisvar'
+        }
+    });
+    var orderStr = JSON.stringify(orders);
+    var mail = {
+        from: "barathkumarv98@gmail.com",
+        to: "barathkumarv98@gmail.com",
+        subject: `Order details - ${order._id}`,
+        text: `Order details - ${orderStr}`,
+    };
+    sender.sendMail(mail, function(error, info) {
+        if (error)
+            console.log(error);
+        else
+            console.log("Email sent successfully: " + info);
+    });
 
 
     // try{
@@ -122,7 +106,7 @@ const confirmOrder = asyncHandler(async (req, res) => {
     //     console.log(err.response)
     // }
     // console.log(data);
-    //res.sendFile(path.join(__dirname, '../documents', 'invoice_123.pdf'))
+    // res.sendFile(path.join(__dirname, '../documents', 'invoice_123.pdf'))
 });
 
 module.exports = { confirmOrder }

@@ -33,6 +33,7 @@ function OrderForm() {
         if (!isNaN(parseInt(quantity)) && parseInt(quantity) !== 0) {
             const obj = {
                 id: id,
+                title: book.title,
                 quantity: 0,
                 cd: false,
                 question: false,
@@ -49,7 +50,6 @@ function OrderForm() {
                 cost += quantity * book.cd_price;
             if (question)
                 cost += quantity * book.question_price;
-            console.log(cost)
             obj["cost"] = cost;
             if (index === -1)
                 temp.push(obj);
@@ -96,7 +96,7 @@ function OrderForm() {
     const callOrderApi = async() => {
         const data = await axios({
             method: "post",
-            url: "/api/confirm-order",
+            url: "/confirm-order",
             data: {
                 orders: orders,
                 total: total,
