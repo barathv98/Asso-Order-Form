@@ -3,9 +3,9 @@ const dotenv = require("dotenv");
 const orderRoutes = require("./routes/orderRoute");
 const connectDB = require("./config/db")
 
-const app = express();
 dotenv.config()
 connectDB();
+const app = express();
 app.use(express.json());
 
 app.use('/confirm-order', orderRoutes);

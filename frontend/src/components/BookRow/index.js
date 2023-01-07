@@ -43,7 +43,7 @@ function BookRow({book, modifyOrders, costsList}) {
                     )
                     : ""
                 }
-                {book.question
+                {book.question && book.question_price > 0
                     ? (<div className={`extra_quants ${isNaN(quants) || quants == 0 ? "disabled" : ""}`}>
                         <input type="checkbox" className="checkbox"
                             onChange={e => { 
